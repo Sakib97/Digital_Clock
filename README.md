@@ -5,10 +5,10 @@ Another button if for incrementing hours and minutes.
 This is a 24 hour clock.
 
 Equipments used: 
->> Arduino Uno
->> DS 1307 RTC Module
->> DHT11 sensor
->> LCD with I2C module
->> Breadboard
->> Push Buttons
->> Buzzer
+1. Arduino Uno
+2. DS 1307 RTC Module
+3. DHT11 sensor
+4. LCD with I2C module
+5. Breadboard
+6. Push Buttons
+7. Buzzer
