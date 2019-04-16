@@ -12,11 +12,10 @@ dht DHT;
 RTC_DS1307 RTC;
 int temp, inc, hours1, minut, add = 11;
 
-//int next = 10;
-//#define next 7
+
 int INC = 11;
 int set_mad = 12;
-//int flag1 = 0;
+
 #define buzzer 13
 
 int HOUR, MINUT, SECOND;
@@ -30,10 +29,10 @@ void setup()
   lcd.begin();  
   lcd.backlight();
   pinMode(INC, INPUT);
-  //pinMode(next, INPUT);
+
   pinMode(set_mad, INPUT);
   pinMode(buzzer, OUTPUT);
- // digitalWrite(next, HIGH);
+
   digitalWrite(set_mad, HIGH);
   digitalWrite(INC, HIGH);
   digitalWrite(buzzer, LOW);
@@ -96,9 +95,6 @@ lcd.print("C");
 lcd.print("H:");
 lcd.print(h);
 lcd.print("%");
-//  if (now.hour() == 13 && now.minute() == 45){
-//      beep();
-//      beep();}
   match();
   
   delay(200);
@@ -124,8 +120,7 @@ void time()
     if (digitalRead(INC) == 0)
     {
       HOUR++;
-//      Serial.print("hr: ");
-//      Serial.println(HOUR);
+
       if (HOUR == 24)
       {
          
@@ -134,10 +129,9 @@ void time()
       while (digitalRead(INC) == 0);
 
     }
-    //lcd.clear();
+   
     lcd.setCursor(0, 0);
     lcd.print("Set Alarm Time ");
-    //lcd.print(x);
     lcd.setCursor(0, 1);
     lcd.print(HOUR);
     lcd.print(":");
@@ -145,29 +139,15 @@ void time()
     lcd.print(":");
     lcd.print(SECOND);
     delay(100);
-
-   // lcd.clear();
-//    lcd.setCursor(0,0);
-//    lcd.print("  ");
-//    lcd.print(":");
-//    lcd.print(MINUT);
-//    lcd.print(":");
-//    lcd.print(SECOND);
-//    delay(100);
     
-//    if (digitalRead(next) == 0)
     if (digitalRead(set_mad) == 0)
     {
       hours1 = HOUR;
       EEPROM.write(add++, hours1);
       temp = 2;
-//      Serial.print("temp in if: ");
-//      Serial.println(temp);
-//      while (digitalRead(next) == 0);
       while (digitalRead(set_mad) == 0);
     }
-//     Serial.print("temp out if: ");
-//      Serial.println(temp);
+
   }
 
   while (temp == 2)
@@ -182,7 +162,7 @@ void time()
       while (digitalRead(INC) == 0);
       
     }
-    // lcd.clear();
+    
     lcd.setCursor(0, 1);
     lcd.print(HOUR);
     lcd.print(":");
@@ -200,13 +180,13 @@ void time()
     delay(100);
 
     
-//    if (digitalRead(next) == 0)
+
     if (digitalRead(set_mad) == 0)
     {
       minut = MINUT;
       EEPROM.write(add++, minut);
       temp = 0;
-//      while (digitalRead(next) == 0);
+
       while (digitalRead(set_mad) == 0);
     }
   }
@@ -223,9 +203,6 @@ void match()
   }
   if (HOUR == tem[11] && MINUT == tem[12])
   {
-//    flag1=1;
-//    Serial.print("Flag: ");
-//     Serial.println(flag1);
     beep();
     beep();
     beep();
@@ -245,8 +222,5 @@ void match()
 void beep()
 {
   tone(buzzer, 10000,500);
-//  digitalWrite(buzzer, HIGH);
   delay(500);
-//  digitalWrite(buzzer, LOW);
-//  delay(500);
 }
